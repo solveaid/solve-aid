@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Solve Aid — Digital Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E45;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --off-white: #F7F5F0;
+    --text-dark: #1A1A2E;
+    --text-muted: #6B7280;
+    --border: #E5E0D8;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: 10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 28px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-bottom: 2.2rem;
+    max-width: 440px;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Hero stats panel */
+  .hero-stats {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+
+  .stat-item {}
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-divider {
+    grid-column: 1 / -1;
+    height: 1px; background: rgba(201,168,76,0.15);
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 100px 5%;
+    background: var(--white);
+  }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 4rem; }
+
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.9rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-header p {
+    color: var(--text-muted);
+    max-width: 500px; margin: 0 auto;
+    font-size: 0.975rem;
+  }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2.2rem;
+    transition: box-shadow 0.25s, transform 0.2s, border-color 0.25s;
+    position: relative; overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 12px 40px rgba(13,27,42,0.1);
+    transform: translateY(-3px);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.12);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.4rem;
+    font-size: 1.4rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* WHY US */
+  .why {
+    padding: 100px 5%;
+    background: var(--navy);
+  }
+
+  .why .section-header h2 { color: var(--white); }
+  .why .section-header p { color: rgba(255,255,255,0.5); }
+
+  .why-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .why-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex; gap: 1.2rem;
+  }
+
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: rgba(201,168,76,0.3);
+    line-height: 1; min-width: 36px;
+  }
+
+  .why-card h4 {
+    font-size: 1rem; font-weight: 600;
+    color: var(--white); margin-bottom: 0.4rem;
+  }
+
+  .why-card p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+  /* PROCESS */
+  .process {
+    padding: 100px 5%;
+    background: var(--off-white);
+  }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; position: relative; margin-top: 3.5rem;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+    height: 1px; background: var(--gold); opacity: 0.3;
+    z-index: 0;
+  }
+
+  .process-step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+
+  .step-dot {
+    width: 56px; height: 56px;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--gold);
+  }
+
+  .process-step h4 {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.4rem;
+  }
+
+  .process-step p { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 80px 5%;
+    text-align: center;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-banner p {
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 2.2rem; font-size: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 3rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--white);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  footer p { color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.4); font-size: 0.82rem;
+    text-decoration: none; transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .process-steps::before { display: none; }
+    footer { flex-direction: column; gap: 1.2rem; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Solve<span>Aid</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Digital Marketing Agency</div>
+      <h1>We Turn Clicks Into <em>Clients</em></h1>
+      <p class="hero-desc">Solve Aid helps businesses grow through data-driven SEO, high-converting ad campaigns, and social media strategies that actually work.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start a Project</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3.8×</div>
+        <div class="stat-label">Avg. ROI Delivered</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5yrs</div>
+        <div class="stat-label">Industry Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2>Services Built for Growth</h2>
+      <p>Every service is designed around one goal — measurable results for your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Search Engine Optimisation</h3>
+        <p>Rank higher, get found faster. We build sustainable organic traffic through technical SEO, content strategy, and authoritative link building.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📢</div>
+        <h3>Paid Advertising</h3>
+        <p>Google Ads, Meta Ads, and beyond. We design and manage campaigns that maximise your budget and drive qualified leads at scale.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Social Media Marketing</h3>
+        <p>Build a brand people follow and trust. From content calendars to community management, we grow your presence on the right platforms.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Analytics & Reporting</h3>
+        <p>No guesswork. Every decision we make is backed by clear data. Monthly reports show exactly what's working and what we're improving.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✉️</div>
+        <h3>Email Marketing</h3>
+        <p>Turn subscribers into buyers. We craft automated email sequences and newsletters that nurture leads and drive repeat revenue.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Strategy Consulting</h3>
+        <p>Not sure where to start? We audit your current digital presence and build a custom roadmap tailored to your goals and budget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Why Solve Aid</div>
+      <h2>A Partner, Not Just an Agency</h2>
+      <p>We work as an extension of your team, invested in your outcomes — not just deliverables.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div>
+          <h4>Results-first mindset</h4>
+          <p>Every campaign is measured against real business outcomes — leads, sales, and revenue — not vanity metrics like impressions or reach.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div>
+          <h4>Transparent communication</h4>
+          <p>You'll always know where your budget is going. Clear reporting, regular check-ins, and no hidden fees — ever.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div>
+          <h4>Industry specialists</h4>
+          <p>Our team brings deep expertise across SEO, paid media, and social — not generalists stretched too thin across every channel.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div>
+          <h4>Scalable strategies</h4>
+          <p>We build frameworks that grow with you — from early-stage startups to established businesses looking to dominate their market.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">How It Works</div>
+      <h2>From Discovery to Results</h2>
+      <p>A clear, repeatable process that gets you from strategy to measurable growth.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-dot">1</div>
+        <h4>Discovery Call</h4>
+        <p>We learn about your business, goals, and current challenges.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">2</div>
+        <h4>Audit & Strategy</h4>
+        <p>We review your digital presence and build a tailored growth plan.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">3</div>
+        <h4>Execution</h4>
+        <p>Our team launches campaigns and optimises continuously.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">4</div>
+        <h4>Report & Scale</h4>
+        <p>Monthly reporting, insights, and scaling what works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="contact">
+  <div class="section-inner">
+    <h2>Ready to Grow Your Business?</h2>
+    <p>Let's build a strategy that delivers real, measurable results for your brand.</p>
+    <a href="mailto:hello@solveaid.com" class="btn-primary">Contact Us — hello@solveaid.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Solve<span>Aid</span></div>
+  <p>© 2025 Solve Aid. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#why">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
