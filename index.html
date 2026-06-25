@@ -375,6 +375,40 @@
     margin-bottom: 2.2rem; font-size: 1rem;
   }
 
+  /* CONTACT ICON BUTTONS */
+  .contact-icons {
+    display: flex; justify-content: center; gap: 2.5rem;
+    margin-top: 2rem; flex-wrap: wrap;
+  }
+
+  .contact-icon-link {
+    display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .contact-icon-circle {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .contact-icon-circle.email { background: var(--gold); }
+  .contact-icon-circle.whatsapp { background: #25D366; }
+
+  .contact-icon-circle svg { width: 30px; height: 30px; fill: var(--navy); }
+  .contact-icon-circle.whatsapp svg { fill: var(--white); }
+
+  .contact-icon-link:hover .contact-icon-circle {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  }
+
+  .contact-icon-link:hover { color: var(--white); }
+
   /* FOOTER */
   footer {
     background: var(--navy);
@@ -617,9 +651,17 @@
   <div class="section-inner">
     <h2>Ready to Grow Your Business?</h2>
     <p>Let's build a strategy that delivers real, measurable results for your brand.</p>
-    <div class="hero-actions" style="justify-content: center; margin-top: 2rem;">
-      <a href="mailto:hello@solveaid.com" class="btn-primary">Contact Us — hello@solveaid.com</a>
-      <a href="https://wa.me/8801980808992" class="btn-outline" target="_blank" rel="noopener">WhatsApp — (+88)01980808992</a>
+    <div class="contact-icons">
+      <a href="mailto:solveaid2025@gmail.com" class="contact-icon-link" aria-label="Email us">
+        <div class="contact-icon-circle email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm19.385 1.58a.5.5 0 0 0-.183-.046L12 11.5 2.798 5.534a.5.5 0 0 0-.183.046L12 13.4l9.385-7.82z"/></svg>
+        </div>
+      </a>
+      <a href="https://wa.me/8801980808992" class="contact-icon-link" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <div class="contact-icon-circle whatsapp">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.149-.149.297-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.133 4.97 4.27 2.92 1.137 2.92.758 3.444.71.524-.05 1.758-.717 2.006-1.41.247-.694.247-1.288.173-1.412-.074-.124-.272-.198-.57-.347zM12.05 22h-.005c-1.766 0-3.5-.476-5.014-1.376L3 21.65l1.038-3.79A9.957 9.957 0 0 1 2 12.05C2 6.494 6.495 2 12.05 2 14.74 2 17.265 3.06 19.13 4.927 21 6.795 22 9.32 22 12.012c0 5.554-4.495 10.05-9.95 9.988z"/></svg>
+        </div>
+      </a>
     </div>
   </div>
 </section>
